@@ -1,0 +1,46 @@
+/******************************************************************************
+
+                            Online C Compiler.
+                Code, Compile, Run and Debug C program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <stdio.h>
+#include <string.h>
+/*
+int main(void)
+{
+    char s[] = "Speech is si1ver, silence is gold.";
+    char t[] = " ";
+    char *test = strtok(s, " ");
+     
+    while (test != NULL) {
+        printf("%s\n", test);
+        test = strtok(NULL, " ");
+    }
+     
+    return 0;    
+}
+*/
+int main() {
+   char str[8] = {0x30, 0x1E, 0x31, 0x1E, 0x32, 0x1E, 0x33, 0x00}; //要被分割的
+   char t[2] = {0x1E, 0x00};
+   char *s = strtok(str, t); //分割的判斷字元
+   char *put[100]; //分割後放入新的字串陣列
+   int s_count=0; //分幾個了
+
+
+   while(s != NULL) {
+     put[s_count++]=s;  //把分出來的丟進去 結果陣列
+     s = strtok(NULL, t); //我不知道 這行幹嘛
+   }
+
+
+   for(int x=0;x<s_count;x++) //驗收成果
+      printf("%d %s\n",x,put[x]);
+
+
+//   system("pause");
+   return 0;
+ }
