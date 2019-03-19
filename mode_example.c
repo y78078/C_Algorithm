@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int Mi=0;
+static int Mi;
 
 int mode(int a[],int n) {
    int maxValue = 0, maxCount = 0, i, j;
@@ -14,25 +14,22 @@ int mode(int a[],int n) {
       }
       
       if (count > maxCount) {
-          printf("count %d %d \n",count,a[i]);
          maxCount = count;
          maxValue = a[i];
+         if(Mi < a[i])Mi = a[i];
       }
       else if (count == maxCount){
-          printf("same %d\n",a[i]);
+          if(Mi < a[i])Mi = a[i];
       }
    }
-
+   printf("Mi %d \n",Mi);
    return maxValue;
 }
 
 int main() {
-   int n = 5;
-   int a[5] ={3,4,3,4,5};
+   int n = 6;
+   int a[6] ={4,3,3,4,5,5};
    
-   
-
-    
    printf("Mode = %d\n MI : %d ", mode(a,n),Mi);
 
    return 0;
